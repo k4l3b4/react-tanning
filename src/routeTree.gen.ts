@@ -18,6 +18,7 @@ import { Route as TableImport } from './routes/table'
 // Create Virtual Routes
 
 const QueryLazyImport = createFileRoute('/query')()
+const InfiniteLazyImport = createFileRoute('/infinite')()
 const FormLazyImport = createFileRoute('/form')()
 const IndexLazyImport = createFileRoute('/')()
 
@@ -28,6 +29,12 @@ const QueryLazyRoute = QueryLazyImport.update({
   path: '/query',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/query.lazy').then((d) => d.Route))
+
+const InfiniteLazyRoute = InfiniteLazyImport.update({
+  id: '/infinite',
+  path: '/infinite',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/infinite.lazy').then((d) => d.Route))
 
 const FormLazyRoute = FormLazyImport.update({
   id: '/form',
@@ -72,6 +79,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FormLazyImport
       parentRoute: typeof rootRoute
     }
+    '/infinite': {
+      id: '/infinite'
+      path: '/infinite'
+      fullPath: '/infinite'
+      preLoaderRoute: typeof InfiniteLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/query': {
       id: '/query'
       path: '/query'
@@ -88,6 +102,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/table': typeof TableRoute
   '/form': typeof FormLazyRoute
+<<<<<<< HEAD
+=======
+  '/infinite': typeof InfiniteLazyRoute
+>>>>>>> 7c95042 (update)
   '/query': typeof QueryLazyRoute
 }
 
@@ -95,6 +113,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/table': typeof TableRoute
   '/form': typeof FormLazyRoute
+<<<<<<< HEAD
+=======
+  '/infinite': typeof InfiniteLazyRoute
+>>>>>>> 7c95042 (update)
   '/query': typeof QueryLazyRoute
 }
 
@@ -103,15 +125,26 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/table': typeof TableRoute
   '/form': typeof FormLazyRoute
+<<<<<<< HEAD
+=======
+  '/infinite': typeof InfiniteLazyRoute
+>>>>>>> 7c95042 (update)
   '/query': typeof QueryLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
+<<<<<<< HEAD
   fullPaths: '/' | '/table' | '/form' | '/query'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/table' | '/form' | '/query'
   id: '__root__' | '/' | '/table' | '/form' | '/query'
+=======
+  fullPaths: '/' | '/table' | '/form' | '/infinite' | '/query'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/table' | '/form' | '/infinite' | '/query'
+  id: '__root__' | '/' | '/table' | '/form' | '/infinite' | '/query'
+>>>>>>> 7c95042 (update)
   fileRoutesById: FileRoutesById
 }
 
@@ -119,6 +152,10 @@ export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   TableRoute: typeof TableRoute
   FormLazyRoute: typeof FormLazyRoute
+<<<<<<< HEAD
+=======
+  InfiniteLazyRoute: typeof InfiniteLazyRoute
+>>>>>>> 7c95042 (update)
   QueryLazyRoute: typeof QueryLazyRoute
 }
 
@@ -126,6 +163,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   TableRoute: TableRoute,
   FormLazyRoute: FormLazyRoute,
+<<<<<<< HEAD
+=======
+  InfiniteLazyRoute: InfiniteLazyRoute,
+>>>>>>> 7c95042 (update)
   QueryLazyRoute: QueryLazyRoute,
 }
 
@@ -142,6 +183,10 @@ export const routeTree = rootRoute
         "/",
         "/table",
         "/form",
+<<<<<<< HEAD
+=======
+        "/infinite",
+>>>>>>> 7c95042 (update)
         "/query"
       ]
     },
@@ -154,6 +199,12 @@ export const routeTree = rootRoute
     "/form": {
       "filePath": "form.lazy.tsx"
     },
+<<<<<<< HEAD
+=======
+    "/infinite": {
+      "filePath": "infinite.lazy.tsx"
+    },
+>>>>>>> 7c95042 (update)
     "/query": {
       "filePath": "query.lazy.tsx"
     }
